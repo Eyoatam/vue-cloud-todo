@@ -2,7 +2,7 @@
 
 ## Project setup
 
-<hr><hr>
+<hr>
 
 # How It Looks
 <img src="https://github.com/Eyoatam/vue-cloud-todo/blob/master/src/assets/LiveSite.png" alt="screenshot">

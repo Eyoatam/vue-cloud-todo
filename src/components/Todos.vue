@@ -5,23 +5,25 @@
       <form @keypress.enter="show('custom-template')" @submit.prevent="addTodos" id="add-todo-form">
         <b-form-input class="input" v-model="Task" placeholder="Enter your todo"></b-form-input>
       </form>
-
       <transition-group
         name="list"
         enter-active-class="animated bounceInUp"
         leave-active-class="animated bounceOutDown"
       >
-        <b-list-group class="centerBootstrap" key="center">
-          <b-list-group-item
-            class="input-bootstrap"
-            variant="light"
-            v-for="(todo, id) in todos"
-            :key="id"
-          >
-            {{todo.Task}}
-            <i @click="deleteTodos(todo)" class="fa fa-minus-circle"></i>
-          </b-list-group-item>
-        </b-list-group>
+        <div key="something">
+          <b-list-group class="centerBootstrap" key="somethingelse" v-if="todos">
+            <b-list-group-item
+              class="input-bootstrap"
+              variant="light"
+              v-for="(todo, id) in todos"
+              id="list"
+              :key="id"
+            >
+              {{todo.Task}}
+              <i @click="deleteTodos(todo)" class="fa fa-minus-circle"></i>
+            </b-list-group-item>
+          </b-list-group>
+        </div>
       </transition-group>
     </div>
   </div>
@@ -39,15 +41,6 @@ export default {
     this.getTodos();
   },
   methods: {
-    // getTodos() {
-    //   db.collection("Todos")
-    //     .get()
-    //     .then((snapshot) => {
-    //       snapshot.docs.forEach((doc) => {
-    //         console.log(doc.data());
-    //       });
-    //     });
-    // },
     show(group, type = "") {
       this.$notify({
         group,
@@ -60,7 +53,7 @@ export default {
       this.$notify({ group, clean: true });
     },
     async getTodos() {
-      let snapshot = await db.collection("Todos").get();
+      let snapshot = await db.collection("Todos").orderBy("Task").get();
       let todos = [];
       snapshot.forEach((doc) => {
         let appData = doc.data();
@@ -70,30 +63,15 @@ export default {
       this.todos = todos;
     },
     async addTodos() {
-      if (this.Task) {
-        await db.collection("Todos").add({
-          Task: this.Task,
-        });
-        this.getTodos();
-        this.Task = "";
-      } else {
-        alert("Your Task Is Required");
-      }
+      await db.collection("Todos").add({
+        Task: this.Task,
+      });
+      this.getTodos();
+      this.Task = "";
     },
-    // deleteTodos(todo) {
-    //   db.collection("Todos")
-    //     .doc(todo.id)
-    //     .delete()
-    //     .then(() => {
-    //       console.log("Document successfully deleted!");
-    //     })
-    //     .catch(function (error) {
-    //       console.error("Error removing document: ", error);
-    //     });
-    //   console.log(todo);
-    // },
     async deleteTodos(todo) {
       await db.collection("Todos").doc(todo.id).delete();
+      this.getTodos();
       console.log("Document successfully deleted!");
     },
   },
@@ -103,17 +81,14 @@ export default {
 <style scoped>
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
-.centerBootstrap {
-  display: flex;
-  justify-content: center;
-}
+
 .input-bootstrap {
-  /* max-width: 500px; */
   margin-top: 0.3rem;
   margin-left: 29.5rem;
   margin-right: 29.5rem;
   color: #2c3e50;
   transition: 100ms ease-in-out;
+  text-align: left;
 }
 
 i {
@@ -123,7 +98,6 @@ i {
 
 @media (max-width: 1200px) {
   .input-bootstrap {
-    /* max-width: 500px; */
     margin-top: 0.3rem;
     margin-left: 18rem;
     margin-right: 18rem;
@@ -159,6 +133,13 @@ h1 {
   letter-spacing: 2px;
   margin-top: 80px;
   text-align: center;
+  font-weight: bold;
+}
+
+@media (max-width: 370px) {
+  h1 {
+    font-size: 3em;
+  }
 }
 
 .content {

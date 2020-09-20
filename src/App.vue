@@ -53,8 +53,9 @@ export default {
 
 <style>
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Nunito", Helvetica, Arial, sans-serif;
   background: #2c3e50;
   color: #2c3e50;
 }

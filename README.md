@@ -1,32 +1,20 @@
-# cloud-todo
+# vue-cloud-todo
 
 ## Project setup
 
-<hr>
-Live demo of the project
-<video src="./src/LiveDemo.mov" autoplay></video>
-```
-npm install
-```
+<hr><hr>
 
-### Compiles and hot-reloads for development
+# How It Looks
+<img src="https://github.com/Eyoatam/vue-cloud-todo/blob/master/src/assets/LiveSite.png" alt="screenshot">
 
-```
-npm run serve
-```
+# Objective 
 
-### Compiles and minifies for production
+- The Objective of this todo list id to implement using firebase and firestore with vue.js
 
-```
-npm run build
-```
+# How It Works
 
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- First clone this repo and cd into the directory <code>(Eg: cd vue-cloud-todo)</code> <br>
+- Then <code>npm install</code> to install dependencies <br>
+- Finally type <code>npm run serve</code> to open it on localhost:8080 <br>
+- or <code>npm run build</code> for production <br>
+- <code>Happy Coding 🎉</code><br>

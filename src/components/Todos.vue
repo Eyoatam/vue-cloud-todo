@@ -2,16 +2,24 @@
   <div id="Todo">
     <h1>Cloud Todo</h1>
     <div id="content">
-      <form @keypress.enter="show('custom-template')" @submit.prevent="addTodos" id="add-todo-form">
-        <b-form-input class="input" v-model="Task" placeholder="Enter your todo"></b-form-input>
-      </form>
-      <transition-group
-        name="list"
-        enter-active-class="animated bounceInUp"
-        leave-active-class="animated bounceOutDown"
+      <form
+        @keypress.enter="show('custom-template')"
+        @submit.prevent="addTodos"
+        id="add-todo-form"
       >
-        <div key="something">
-          <b-list-group class="centerBootstrap" key="somethingelse" v-if="todos">
+        <b-form-input
+          class="input"
+          v-model="Task"
+          placeholder="Enter your todo"
+        ></b-form-input>
+      </form>
+      <div key="something">
+        <b-list-group class="centerBootstrap" key="somethingelse" v-if="todos">
+          <transition-group
+            name="list"
+            enter-active-class="animated bounceInUp"
+            leave-active-class="animated bounceOutDown"
+          >
             <b-list-group-item
               class="input-bootstrap"
               variant="light"
@@ -19,12 +27,12 @@
               id="list"
               :key="id"
             >
-              {{todo.Task}}
+              {{ todo.Task }}
               <i @click="deleteTodos(todo)" class="fa fa-minus-circle"></i>
             </b-list-group-item>
-          </b-list-group>
-        </div>
-      </transition-group>
+          </transition-group>
+        </b-list-group>
+      </div>
     </div>
   </div>
 </template>

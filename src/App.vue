@@ -13,7 +13,7 @@
             <i class="fa fa-right-circle"></i>
           </div>
           <div class="custom-template-content">
-            <h2 class="custom-template-title">{{props.item.title}}</h2>
+            <h2 class="custom-template-title">{{ props.item.title }}</h2>
           </div>
           <div class="custom-template-close" @click="props.close">
             <i class="fa fa-close"></i>

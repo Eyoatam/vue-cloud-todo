@@ -5,7 +5,8 @@
 <hr>
 
 # How It Looks
-<img src="https://github.com/Eyoatam/vue-cloud-todo/blob/master/src/assets/LiveSite.png" alt="screenshot">
+
+![screenshot](https://user-images.githubusercontent.com/65610778/93798773-e1893f80-fc46-11ea-8df2-cd8cc312edeb.png)
 
 # Objective 
 
